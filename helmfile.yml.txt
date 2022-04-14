@@ -1,0 +1,8 @@
+---
+repositories:
+  - name: ui-helm
+    url: git+https://github.com/sg31011991/helmfiledemo@ui-helm?ref=main
+releases:
+  - name: ui-helm
+    chart: ui-helm/ui-helm
+    installed: true
