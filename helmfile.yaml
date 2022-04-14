@@ -1,6 +1,0 @@
----
-releases:
-
-  - name: ui
-    chart: ./ui-helm
-    installed: false
