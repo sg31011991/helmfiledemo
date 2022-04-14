@@ -13,4 +13,4 @@ service:
   targetport: 8080
 
 container:
-  name: react-ui
+  name: myappcon
