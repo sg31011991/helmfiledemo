@@ -19,8 +19,10 @@ spec:
           image: {{ .Values.image.repository | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: POSTGRESQL_PASSWORD
-              value: "Password@123"
+             - name : {{ .Values.env.name | quote }}
+               value: {{ .Values.env.value | quote }}
+            #- name: POSTGRESQL_PASSWORD
+             # value: "Password@123"
           ports:
             - containerPort: {{ .Values.service.targetport }}
           
