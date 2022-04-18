@@ -14,3 +14,6 @@ service:
 
 container:
   name: myappcon
+ env:
+  - name: POSTGRESQL_PASSWORD
+    value: "Password@123"
