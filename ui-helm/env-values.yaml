@@ -1,3 +1,0 @@
-examplemap:
-   - name: POSTGRESQL_PASSWORD
-     value: "Password@123"
