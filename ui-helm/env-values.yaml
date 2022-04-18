@@ -1,0 +1,3 @@
+examplemap:
+ - name: "POSTGRESQL_PASSWORD"
+   value: "test2" 
