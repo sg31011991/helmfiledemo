@@ -21,7 +21,7 @@ spec:
           env:
             {{- range .Values.examplemap }}
             - name: {{ .name }}
-              value: {{ .value }}
+              #value: {{ .value }}
             {{- end }} 
           #  - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
