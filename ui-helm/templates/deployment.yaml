@@ -19,10 +19,10 @@ spec:
           image: {{ .Values.image.repository | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-             {{ .Values.env }}
-              - name: {{ .name }}
-                value: {{ .value }}
-             {{- end }} 
+            {{- range .Values.examplemap }}
+            - name: {{ .name }}
+              value: {{ .value }}
+            {{- end }} 
           #  - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
           ports:
