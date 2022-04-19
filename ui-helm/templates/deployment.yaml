@@ -25,6 +25,6 @@ spec:
             {{- end }}
            # - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
-          ports:
-            - containerPort: {{ .Values.service.targetport }}
+          #ports:
+            #- containerPort: {{ .Values.service.targetport }}
           
