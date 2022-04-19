@@ -20,8 +20,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             {{- range .Values }}         --Iteration begins over here
-            - name: {{ .name }}
-              value: {{ .value }}
+            #- name: {{ .name }}
+             - value: {{ .value }}
             {{- end }}
            # - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
