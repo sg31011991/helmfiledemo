@@ -19,7 +19,7 @@ spec:
           image: {{ .Values.image.repository | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            {{- range .Values.examplemap }}         --Iteration begins over here
+            {{- range .Values }}         --Iteration begins over here
             - name: {{ .name }}
               value: {{ .value }}
             {{- end }}
