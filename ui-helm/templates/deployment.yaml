@@ -23,7 +23,6 @@ spec:
             - name: {{ .name }}
               value: {{ .value }}
             {{- end }}   
-            
            # - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
           ports:
