@@ -15,7 +15,5 @@ service:
 container:
   name: myappcon
 examplemap:
- - name: "USERNAME"
-   value: "test1"
  - name: "POSTGRESQL_PASSWORD"
    value: "test2" 
