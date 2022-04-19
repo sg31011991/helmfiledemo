@@ -18,5 +18,10 @@ spec:
         - name: {{  .Values.container.name }}
           image: {{ .Values.image.repository | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            {{- range .Values.examplemap }}
+            - name: {{ .name }}
+              value: {{ .value }}
+            {{- end }} 
           ports:
             - containerPort: {{ .Values.service.targetport }}
