@@ -19,8 +19,8 @@ spec:
           image: {{ .Values.image.repository | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: {{ .Values.examplemap.name }}
-              value: {{ .Values.examplemap.value }}
+            - name: {{ .Values.examplemap.name | quote }}
+              value: {{ .Values.examplemap.value | quote }}
           
            # - name: POSTGRESQL_PASSWORD
            #   value: "Password@123"
