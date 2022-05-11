@@ -1,0 +1,14 @@
+namespace: demo-application
+
+mysql:
+    deployment:
+        image: mysql:5.6
+        replicaCount: 1
+    service:
+        type: ClusterIP
+        port: 3306
+    pvc:
+        accessMode: ReadWriteOnce
+        storage: 2Gi
+    dbpassword:
+          value: "4oCcUGFzc3dvcmRAMTIz4oCdCg==" 
