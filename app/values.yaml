@@ -1,0 +1,20 @@
+
+namespace: demo-application
+replicaCount: 1
+
+image:
+  repository: srimanta104/ui:v1
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+service:
+  type: NodePort
+  port: 8080
+  targetport: 8080
+
+container:
+  name: myappcon
+examplemap:
+ - name: "POSTGRESQL_PASSWORD"
+   value: "test2" 
