@@ -1,0 +1,14 @@
+namespace: demo-application
+
+postgres:
+    deployment:
+        image: postgres:10.1
+        replicaCount: 1
+    service:
+        type: ClusterIP
+        port: 3306
+    pvc:
+        accessMode: ReadWriteOnce
+        storage: 2Gi
+    dbpassword:
+          value: "4oCcUGFzc3dvcmRAMTIz4oCdCg==" 
