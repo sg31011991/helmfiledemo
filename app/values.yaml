@@ -5,16 +5,23 @@ replicaCount: 1
 image:
   repository: srimanta104/ui:v1
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
+  # Overrides the image tag whose default is the chart appVersion. 
   tag: ""
 
 service:
   type: NodePort
   port: 8080
   targetport: 8080
+  #ANNOTATIONS: {
+  #  app.kubernetes.io/managed-by: Helm,
+  #  meta.helm.sh/release-name: testapachepht,
+  #  meta.helm.sh/release-namespace: demo-app-ns
+  #}
 
 container:
   name: myappcon
 examplemap:
  - name: "POSTGRESQL_PASSWORD"
    value: "test2" 
+SERVICE:
+  

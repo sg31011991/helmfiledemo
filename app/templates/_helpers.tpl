@@ -60,3 +60,9 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+{{/*
+Create app secrets name
+*/}}
+{{- define "ui-helm.secrets" -}}
+{{ include "ui-helm.fullname" . }}-secrets
+{{- end -}}
