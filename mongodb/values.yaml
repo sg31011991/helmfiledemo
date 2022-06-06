@@ -1,0 +1,16 @@
+namespace: demo-db
+
+mysql:
+    deployment:
+        image: mongo:4.0.8
+        replicaCount: 1
+    service:
+        type: ClusterIP
+        port: 27017
+    pvc:
+        accessMode: ReadWriteOnce
+        storage: 2Gi
+    dbuser:
+          value: "YWRtaW4K"
+    dbpassword:
+          value: "cGFzc3dvcmQK" 
