@@ -1,6 +1,6 @@
-# Kubernetes WordPress + MySQL helm chart
+# Kubernetes WordPress + mongodb helm chart
 
-The simplest example of a helm chart for WordPress and MySQL (**chart** directory).
+The simplest example of a helm chart for WordPress and mongodb (**chart** directory).
 
 Also, original manifests provided for using via **kubectl** (**original-manifests** directory).
 
@@ -45,7 +45,7 @@ kubectl get nodes
 
 1) Clone this git repository
 ```sh
-git clone git@github.com:ltblueberry/wordpress-mysql-helm-chart.git
+git clone git@github.com:ltblueberry/wordpress-mongodb-helm-chart.git
 ```
 2) Execute next commands **from repository directory**
 
@@ -66,7 +66,7 @@ kubectl get service -n demo-application
 Now you can check this IP address with web-browser
 
 # Helm Variables
-Defined in [values.yaml](https://github.com/ltblueberry/wordpress-mysql-helm-chart/blob/develop/values.yaml)
+Defined in [values.yaml](https://github.com/ltblueberry/wordpress-mongodb-helm-chart/blob/develop/values.yaml)
 
 | Name              | Default Value       |Difinition   |
 |-----------------------|---------------------|---------------------|
@@ -80,10 +80,10 @@ Defined in [values.yaml](https://github.com/ltblueberry/wordpress-mysql-helm-cha
 |`service.type` |` LoadBalancer` |Kubernetes Service type
 |`service.port` | `80 `|Publishing port
 
-## `mysql`:
+## `mongodb`:
 | Name              | Default Value       |Difinition   |
 |-----------------------|---------------------|---------------------|
-| `deployment.image` | `mysql:5.6` |Docker image for MySQL|
+| `deployment.image` | `mongodb:5.6` |Docker image for mongodb|
 |`deployment.replicaCount` | `1` |Number of Pods to run
 |`service.type` |` ClusterIP` |Kubernetes Service type
 |`service.port` | `3306 `|Publishing port

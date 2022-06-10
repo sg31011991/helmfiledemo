@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ template "mysql.fullname" . }}
+  name: {{ template "mongodb.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "mysql.labels" . | nindent 4 }}
+    {{- include "mongodb.labels" . | nindent 4 }}
 spec:
   serviceName: database
-  replicas: {{ .Values.mysql.deployment.replicaCount }}
+  replicas: {{ .Values.mongodb.deployment.replicaCount }}
   selector:
     matchLabels:
-      {{- include "mysql.selectorLabels" . | nindent 6 }}
+      {{- include "mongodb.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "mysql.selectorLabels" . | nindent 8 }}
+        {{- include "mongodb.selectorLabels" . | nindent 8 }}
     spec:
       containers:
-      - name: {{ template "mysql.name" . }}
-        image: {{ .Values.mysql.deployment.image }}
+      - name: {{ template "mongodb.name" . }}
+        image: {{ .Values.mongodb.deployment.image }}
         ports:
-        - name: mysql
+        - name: mongodb
           containerPort: 27017
         env:
         - name: MONGO_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
-              name: {{ template "mysql.secrets" . }}
+              name: {{ template "mongodb.secrets" . }}
               key: db-user
         - name: MONGO_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: {{ template "mysql.secrets" . }}
+              name: {{ template "mongodb.secrets" . }}
               key: db-password 
         volumeMounts:
         - name: db-data
@@ -39,4 +39,4 @@ spec:
       volumes:
       - name: db-data
         #persistentVolumeClaim:
-         # claimName: {{ template "mysql.pvc" . }}
+         # claimName: {{ template "mongodb.pvc" . }}

@@ -1,6 +1,6 @@
 namespace: demo-db
 
-mysql:
+mongodb:
     deployment:
         image: mongo:4.0.8
         replicaCount: 1

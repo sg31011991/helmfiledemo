@@ -51,49 +51,49 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 
 
 {{/*
-Name of mysql
+Name of mongodb
 */}}
-{{- define "mysql.name" -}}
-demo-mysql
+{{- define "mongodb.name" -}}
+db
 {{- end -}}
 
 {{/*
-Create a default fully qualified mysql name.
+Create a default fully qualified mongodb name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 */}}
-{{- define "mysql.fullname" -}}
-{{- printf "%s-%s" .Release.Name "demo-mysql" | trunc 63 | trimSuffix "-" -}}
+{{- define "mongodb.fullname" -}}
+{{- printf "%s-%s" .Release.Name "db" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
-Create mysql pvc name
+Create mongodb pvc name
 */}}
-{{- define "mysql.pvc" -}}
-{{ include "mysql.fullname" . }}-data
+{{- define "mongodb.pvc" -}}
+{{ include "mongodb.fullname" . }}-data
 {{- end -}}
 
 {{/*
-Create mysql secrets name
+Create mongodb secrets name
 */}}
-{{- define "mysql.secrets" -}}
-{{ include "mysql.fullname" . }}-secrets
+{{- define "mongodb.secrets" -}}
+{{ include "mongodb.fullname" . }}-secrets
 {{- end -}}
 
 
 {{/*
-Common labels for mysql
+Common labels for mongodb
 */}}
-{{- define "mysql.labels" -}}
-app.kubernetes.io/name: {{ include "mysql.name" . }}
+{{- define "mongodb.labels" -}}
+app.kubernetes.io/name: {{ include "mongodb.name" . }}
 helm.sh/chart: {{ include "wordpress.chart" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{/*
-Selector labels for mysql
+Selector labels for mongodb
 */}}
-{{- define "mysql.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "mysql.name" . }}
+{{- define "mongodb.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "mongodb.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
