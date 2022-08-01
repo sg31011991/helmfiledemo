@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-deployment
+  namespace: {{ .Values.namespace }}
+  annotations:
+#{{ toYaml .Values.service.ANNOTATIONS | indent 4 }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    meta.helm.sh/release-name: {{ .Release.Name }}
+    meta.helm.sh/release-namespace: {{ .Values.namespace}}
+  labels:
+    {{- include "ui-helm.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "ui-helm.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "ui-helm.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{  .Values.container.name }}
+          image: {{ .Values.image.repository | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: DB_HOST
+            #value: {{ template "ui-helm.fullname" . }}
+            value: wordpress-mysql
+          - name: DB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "ui-helm.secrets" . }}
+                key: db-password 
+          ports:
+            - containerPort: {{ .Values.service.targetport }}
